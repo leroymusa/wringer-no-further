@@ -1,211 +1,633 @@
-<!-- Leroy was here bwahahaha -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Leroy Musa's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 10px;
+            min-height: 50px;
+            border-bottom: #77aaff 3px solid;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        header a:hover {
+            color: #77aaff;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .header-text {
+            text-align: center;
+            padding: 20px 0;
+            animation: slideDown 2s ease-in-out;
+        }
+
+        .header-text h1 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .header-text h1 span {
+            color: #77aaff;
+        }
+
+        .header-text p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .sub-title {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .about, .services, .portfolio, .projects, .contact {
+            background: #fff;
+            padding: 20px 0;
+        }
+
+        .about img, .portfolio img, .projects img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .tab-titles {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab-titles p {
+            margin: 0 10px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .tab-titles .active-link {
+            font-weight: bold;
+            color: #77aaff;
+        }
+
+        .tab-contents {
+            display: none;
+            color: #333;
+        }
+
+        .active-tab {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .services-list, .work-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .services-list div, .work {
+            background: #77aaff;
+            color: #fff;
+            padding: 20px;
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.5s ease;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .services-list div:hover, .work:hover {
+            transform: scale(1.05);
+        }
+
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,0.7);
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .work:hover .layer {
+            opacity: 1;
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background: #77aaff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .project-section {
+            margin: 40px 0;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .project-content img {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .project-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            color: #333;
+        }
+
+        .project-table th, .project-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .project-table th {
+            background-color: #77aaff;
+            color: #fff;
+            text-align: left;
+        }
+
+        .contact-left, .contact-right {
+            flex: 1;
+            margin: 20px;
+        }
+
+        .contact-left h1 {
+            color: #77aaff;
+        }
+
+        .contact-left p, .contact-left a {
+            color: #333;
+        }
+
+        .contact-right form input, .contact-right form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        .contact-right form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #77aaff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-list, .work-list {
+                flex-direction: column;
+            }
+
+            header li {
+                display: block;
+                padding: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="header">
-
-  </div class="container">
-    <nav>
-        <img src="images/logo.png" alt="alt" class="logo">
-        <ul>
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <i class="fas fa-times" onclick="closemenu()"></i>
-        </ul>
-        <i class="fas fa-bars" onclick="openmenu()"></i>
-    </nav>  
-    <div class="header-text">  
-        <p>Software Developer</p>
-        <h1>Hi, I'm <span>Leroy</span><br>From Canada</h1>  
-    </div>                  
-    </div>
-  </div>  
-
-  <!--- about  ---------->
-  <div id="about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1">
-                <img src="images/user.png" alt="alt">
-            </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p>I am a software developer</p>
-
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                    <p class="tab-links" onclick="opentab('education')">Education</p>
-                </div>
-                <div class="tab-contents active-tab" id="skills">
-                    <ul>
-                        <li><span>Embedded Systems</span><br>Robotics and Rocketry</li>
-                        <li><span>Web Development</span><br>Web App Development</li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="experience">
-                    <ul>
-                        <li><span>Feb 2024 - Present</span><br>Rover Software and Controls Engineer</li>
-                        <li><span>Oct 2023 - Present</span><br>Lead Avionics Software Engineer</li>
-                        <li><span>Aug 2019 - Sept 2019</span><br>Software Engineer</li>
-                    </ul>
-                </div>  
-                <div class="tab-contents" id="education">
-                    <ul>
-                        <li><span>2022 - Present</span><br>Bachelor of Computer Science</li>
-                    </ul>
-                </div>
-            </div>
-        </div>  
-    </div>
-  </div>
-
-<!-- -----------services------------------------------------ -->
-
-<div id="services">
-    <div class="container">
-        <h1 class="sub-title">My Services</h1>
-        <div class="services-list">
-            <div>
-                <i class="fa-solid fa-code"></i>
-                <h2>Web Design</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                <a href="#">Learn more</a>
-            </div>
-            <div>
-                <i class="fa-solid fa-crop-simple"></i>
-                <h2>Embedded Systems</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                <a href="#">Learn more</a>
-            </div>
-            <div>
-                <i class="fa-brands fa-app-store"></i>
-                <h2>App Design</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                <a href="#">Learn more</a>
+    <header>
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <h1>Hi, I'm <span>Leroy Musa</span><br>From Canada</h1>
+                <p>Software Developer</p>
             </div>
         </div>
-    </div>
-</div>
+    </header>
 
-<div id="portfolio">
-    <div class="container">
-        <h1 class="sub-title">My Work</h1>
-        <div class="work-list">
-            <div class="work">
-                <img src="images/work-1.png">
-                <div class="layer">
-                    <h3>Goose 4</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                    <a href="#"><i class="fa-solid fa-link"></i></a>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.jpeg" alt="User Image">
                 </div>
-            </div>
-            <div class="work">
-                <img src="images/work-2.png">
-                <div class="layer">
-                    <h3>YURS Rover</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                    <a href="#"><i class="fa-solid fa-link"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/work-3.png">
-                <div class="layer">
-                    <h3>PSTViz</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, voluptatum!</p>
-                    <a href="#"><i class="fa-solid fa-link"></i></a>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Aspiring Computer Scientist seeking Fall 2024 Internship Opportunities. Currently majoring in Computer Science at York University, Toronto, Canada.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Embedded Systems</span><br>Robotics and Rocketry</li>
+                            <li><span>Web Development</span><br>Web App Development</li>
+                            <li><span>Machine Learning</span><br>AI and Data Science</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li>
+                                <span>Apr 2024 - Present</span><br>Web Developer - York University Robotics Society
+                                <p>On-Call</p>
+                                <p>Led enhancement of the light trail detection system for the autonomous rover, developed and implemented algorithms for light detection, and conducted comprehensive tests to ensure reliability.</p>
+                            </li>
+                            <li>
+                                <span>Feb 2024 - Present</span><br>Software Developer - Mars Rover Team, York University Robotics Society
+                                <p>Developed algorithms for detecting infrared, red, blue, amber lights with accurate coordinate and intensity reporting over ROS. Utilized GDB and Valgrind for debugging and resolving critical issues.</p>
+                            </li>
+                            <li>
+                                <span>Oct 2023 - Present</span><br>Lead Avionics Software Engineer - Arbalest Rocketry
+                                <p>North York, Ontario, Canada</p>
+                                <p>Leading a team of 7 engineers in designing the avionics system for Arbalest’s 4th generation rocket, Goose 4. Developed a 2-stage high-power rocket’s flight computer and ground control systems.</p>
+                            </li>
+                            <li>
+                                <span>Oct 2023 - Present</span><br>Project Lead - Rocket Ground Station, Arbalest Rocketry
+                                <p>Leading the development of ground control systems. <a href="https://github.com/Arbalest-Rocketry/flight-computer">GitHub Repository</a></p>
+                            </li>
+                            <li>
+                                <span>Aug 2019 - Sep 2019</span><br>Summer Student Intern - Chevron
+                                <p>Lekki, Lagos, Nigeria</p>
+                                <p>Worked on PHP projects and gained experience in web development.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2022 - 2025</span><br>Bachelor of Computer Science, York University</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="#" class="btn">See more</a>
-    </div>
-</div>
+    </section>
 
-<!--------------- contact ------------------->
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact Me</h1>
-                <p><i class="fa-solid fa-paper-plane"></i>g8KXv@example.com</p>
-                <p><i class="fa-solid fa-phone"></i>+1 123456789</p>
-                <div class="social-icons">  
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter-square"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>Creating visually appealing and user-friendly web designs that enhance user experience.</p>
+                    <a href="#">Learn more</a>
                 </div>
-                <a href="images/my-cv.pdf" download class="btn btn2">Download CV</a>
-            </div>
-            <div class="contact-right">
-                <form name="submit-to-google-sheet">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                </form>
-                <span id="msg"></span>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2>Embedded Systems</h2>
+                    <p>Developing efficient and reliable embedded systems for various applications, including robotics and rocketry.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fas fa-mobile-alt"></i>
+                    <h2>App Design</h2>
+                    <p>Designing mobile applications with a focus on performance and usability.</p>
+                    <a href="#">Learn more</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="copyright">
-        <p>Copyright © 2024. All rights reserved.</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work-1.jpg" alt="Goose 4">
+                    <div class="layer">
+                        <h3>Goose 4</h3>
+                        <p>Avionics system for a high-power rocket, optimizing trajectory accuracy and ensuring mission success.</p>
+                        <a href="#goose4"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.jpeg" alt="YURS Rover">
+                    <div class="layer">
+                        <h3>YURS Rover</h3>
+                        <p>Light trail detection system for autonomous rover, crucial for CIRC 2024 traversal tasks.</p>
+                        <a href="#yurs-rover"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/pstviz.png" alt="Priority Search Tree">
+                    <div class="layer">
+                        <h3>Priority Search Tree</h3>
+                        <p>This implementation includes methods for building the PST using bottom-up heap construction, performing heapify operations, and printing the tree for visualization purposes.</p>
+                        <a href="#priority-search-tree"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/hypercube.png" alt="Exploring Hypercube Corners">
+                    <div class="layer">
+                        <h3>Exploring Hypercube Corners</h3>
+                        <p>Algorithmic exploration of hypercube corners in high-dimensional spaces.</p>
+                        <a href="#exploring-hypercube-corners"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <h1 class="sub-title">Projects</h1>
+
+        <!-- Arbalest Goose 4 Project -->
+        <div class="project-section" id="goose4">
+            <h2 class="project-title">Arbalest Goose 4 Avionics Systems & Flight Computer Software</h2>
+            <p>This project involves the design and development of a flight computer for our 2-Stage High Power Rocket, set to launch at Launch Canada 2024.</p>
+            
+            <h3 class="project-subtitle">Flight Computer</h3>
+            <p>Our flight computer setup includes two unique PCBs for different rocket stages:</p>
+            <ul>
+                <li><strong>Stage 1 ("BLOB")</strong>: Manages the first stage operations, ensuring smooth launch and ascent.</li>
+                <li><strong>Stage 2 (Prototyping Board)</strong>: Controls the second stage and RunCam devices for video recording.</li>
+            </ul>
+            <p>This dual-PCB setup ensures specialized and reliable performance throughout the flight.</p>
+            
+            <h3 class="project-subtitle">Components</h3>
+            <ul>
+                <li>Microcontroller: Teensy 4.1</li>
+                <li>Sensors: Adafruit BMP280 (Altimeter), Adafruit BNO055 (IMU), SparkFun GNSS Receiver Breakout - MAX-M10S (Qwiic) (GPS)</li>
+                <li>SD Breakout: Adafruit SPI Flash SD Card - XTSD 512 MB</li>
+                <li>Communication: Adafruit LoRa RFM9X</li>
+                <li>COTS Flight Computer: Featherweight Blue Raven</li>
+                <li>COTS GPS: Featherweight GPS Tracker</li>
+            </ul>
+            <img src="images/electronics-mount-cad-design.png" alt="Electronics Mount CAD Design">
+            
+            <h3 class="project-subtitle">Testing Setup</h3>
+            <p>Testing setup for the flight computer and ground station:</p>
+            <img src="images/testing-setup.png" alt="Testing Setup">
+
+            <h3 class="project-subtitle">PCB Improvements</h3>
+            <p>Major improvements from PCB v1.0 to PCB v2.0:</p>
+            <table class="project-table">
+                <tr>
+                    <th>Feature</th>
+                    <th>PCB v1.0</th>
+                    <th>PCB v2.0</th>
+                    <th>Improvement Description</th>
+                </tr>
+                <tr>
+                    <td>Layering</td>
+                    <td>Single-layer design</td>
+                    <td>Multi-layer design</td>
+                    <td>Enhanced routing and reduced interference</td>
+                </tr>
+                <tr>
+                    <td>Power Supply Management</td>
+                    <td>Basic power supply connections</td>
+                    <td>Advanced power routing</td>
+                    <td>Improved power stability and distribution</td>
+                </tr>
+                <tr>
+                    <td>LoRa Module</td>
+                    <td>Back right</td>
+                    <td>Front top right corner</td>
+                    <td>Better isolation from other components for improved signal quality & better placement for electronics mount</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- YURS Rover Project -->
+        <div class="project-section" id="yurs-rover">
+            <h2 class="project-title">YURS Rover Light Trail Detection System</h2>
+            <p>Light trail detection system for autonomous rover, crucial for CIRC 2024 traversal tasks.</p>
+            <img src="images/work-3.jpeg" alt="YURS Rover">
+            <img src="images/your-second-image.png" alt="Second Image">
+        </div>
+
+        <!-- Priority Search Tree Project -->
+        <div class="project-section" id="priority-search-tree">
+            <h2 class="project-title">Priority Search Tree (PST)</h2>
+            <p>This implementation includes methods for building the PST using bottom-up heap construction, performing heapify operations, and printing the tree for visualization purposes.</p>
+            
+            <h3 class="project-subtitle">How does it work?</h3>
+            <p>A Priority Search Tree organizes points in a balanced binary tree structure, where each node represents a range along one dimension. This allows for efficient range queries and point insertion and deletion operations.</p>
+            
+            <h3 class="project-subtitle">Project Details</h3>
+            <p>The PrioritySearchTree.java project implements a Priority Search Tree (PST) in Java. It provides functionality to construct a PST from a set of points and visualize the resulting tree structure. The implementation includes methods for building the PST using bottom-up heap construction, performing heapify operations, and printing the tree for visualization purposes.</p>
+            
+            <h3 class="project-subtitle">Usage</h3>
+            <p>To use the PrioritySearchTree.java implementation, follow these steps:</p>
+            <ul>
+                <li>Compile the PrioritySearchTree.java file.</li>
+                <li>Create an array of points (external nodes) to represent the input data.</li>
+                <li>Initialize a PrioritySearchTree object with the array of points.</li>
+                <li>Call the buildPrioritySearchTree() method to construct the PST.</li>
+                <li>Call the printTree() method to visualize the resulting tree structure.</li>
+            </ul>
+            
+            <h3 class="project-subtitle">Example</h3>
+            <pre><code>
+public class Main {
+    public static void main(String[] args) {
+        Point[] points = { 
+            new Point("p1", -8, 3), new Point("p2", -7, 1), 
+            new Point("p3", -1, 6), new Point("p4", 2, 4),
+            new Point("p5", 4, 8), new Point("p6", 5, 9), 
+            new Point("p7", 7, 1), new Point("p8", 9, 7) 
+        };
+
+        PrioritySearchTree.testPrioritySearchTree("Example", points);
+    }
+}
+            </code></pre>
+        </div>
+    <!-- Exploring Hypercube Corners Project -->
+    <div class="project-section" id="exploring-hypercube-corners">
+        <h2 class="project-title">Exploring Hypercube Corners</h2>
+        <p>Algorithmic exploration of hypercube corners in high-dimensional spaces.</p>
+        <p>This project focuses on implementing algorithms to efficiently explore the corners of hypercubes in various dimensions, which has applications in fields like data analysis and machine learning.</p>
+        <p>This implementation includes methods for generating and printing hypercube corners using both recursive and iterative approaches.</p>
+        <a href="https://github.com/leroymusa/Exploring-Hypercube-Corners"><i class="fas fa-link"></i></a>
     </div>
 </div>
-  <script>
+</section>
 
-    var tablinks = document.getElementById("tab-links");
-    var tabcontents = document.getElementById("tab-contents");
 
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i> g8KXv@example.com</p>
+                    <p><i class="fas fa-phone"></i> +1 123456789</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <a href="images/my-cv.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2024. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- JavaScript for tabs -->
+    <script>
+        function opentab(tabname) {
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            for (var tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (var tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
         }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-    }
+    </script>
 
-  </script>
+    <!-- JavaScript for form submission -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw2cSb7K7bKq9sDzHkL5RiVq0RJcJn0wDq0X7wY9hL9FpXy4w4d5dJyO9JZU0iZQnXh6W9n/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
 
-  <script>
-    var sidemenu = document.getElementById("sidemenu");
-
-    function openmenu(){
-        sidemenu.style.right = "0";
-    }
-    function closemenu(){
-        sidemenu.style.right = "-200px";
-    }
-  </script>
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw2cSb7K7bKq9sDzHkL5RiVq0RJcJn0wDq0X7wY9hL9FpXy4w4d5dJyO9JZU0iZQnXh6W9n/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message sent successfully"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            },5000)
-            form.reset()
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
         })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
+    </script>
 </body>
 </html>
